@@ -180,6 +180,30 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Обновить токен",
+        "tags": [
+          "Tokens"
+        ],
+        "parameters": [
+          {
+            "name": "{userName}-{token}",
+            "in": "body",
+            "description": "{userName} - имя юзера. {token} - токен",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Токен обновлен",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
       }
     },
     "/tokens/{userId}": {
@@ -237,35 +261,8 @@
             }
           }
         }
-      },
-      "put": {
-        "summary": "Обновить токен",
-        "tags": [
-          "Tokens"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "body",
-            "description": "Обновление токена по знвчению текена",
-            "schema": {
-              "$ref": "#/definitions/Token"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Токен обновлен",
-            "schema": {
-              "$ref": "#/definitions/Token"
-            }
-          }
-        }
       }
     }
-
-
-
   },
   "definitions": {
     "User": {
