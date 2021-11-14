@@ -1,0 +1,321 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger test Application API for Node.js course",
+    "description": "Swagger test Application API for Node.js course",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    },
+    {
+      "name": "Tokens",
+      "description": "API for tokens in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user with given ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user with give ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/tokens": {
+      "post": {
+        "tags": [
+          "Tokens"
+        ],
+        "description": "Добавление токена пользователю",
+        "parameters": [
+          {
+            "user_id": "user_id",
+            "in": "body",
+            "description": "Добавление токена пользователю",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Токен добавлен",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Tokens"
+        ],
+        "summary": "Все токены всех юзеров",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
+      }
+    },
+    "/tokens/{userId}": {
+      "parameters": [
+        {
+          "user_id": "userId",
+          "in": "path",
+          "required": true,
+          "description": "Токены по ID юзера",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Tokens"
+        ],
+        "summary": "Токены по ID юзера",
+        "responses": {
+          "200": {
+            "description": "Токен нашелся",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
+      }
+    },
+    "/tokens/{userName}-{token}": {
+      "parameters": [
+        {
+          "name": "userName",
+          "in": "body",
+          "required": true,
+          "description": "Имя юзера",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "body",
+          "required": true,
+          "description": "Значение токена",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "summary": "Удаление токена",
+        "tags": [
+          "Tokens"
+        ],
+        "responses": {
+          "200": {
+            "description": "Токен удален",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Обновить токен",
+        "tags": [
+          "Tokens"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "Обновление токена по знвчению текена",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Токен обновлен",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          }
+        }
+      }
+    }
+
+
+
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "id",
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string"
+        }
+      }
+    },
+    "Token": {
+      "required": [
+        "user_id",
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "user_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Tokens": {
+      "type": "array",
+      "$ref": "#/definitions/Token"
+    }
+  }
+}

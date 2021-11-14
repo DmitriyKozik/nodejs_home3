@@ -1,0 +1,37 @@
+{
+  "name": "node.js-home3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "repository": "git@github.com:........git",
+  "author": "Dmitriy Kozik <dmitriiy.kozik@google.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx rimraf dist/ && npx tsc",
+    "start": "node dist/index.js",
+    "tslint": "npx tslint -c tslint.json -p tsconfig.json",
+    "test": "npx jest --coverage --forceExit --detectOpenHandles",
+    "tslint-fix": "npx tslint -c tslint.json -p tsconfig.json --fix",
+    "buildAll": "yarn cache clean && npx rimraf node_modules/ && npx rimraf yarn.lock && yarn && yarn build"
+  },
+  "dependencies": {
+    "@types/node": "^12.12.26",
+    "express": "^4.17.1",
+    "md5": "^2.3.0",
+    "body-parser": "1.17.2",
+    "mongoose": "4.11.5",
+    "swagger-ui-express": "2.0.6",
+    "method-override": "2.3.9"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "jest": "^23.6.0",
+    "ts-jest": "^24.0.0",
+    "tslint": "6.1.3",
+    "tslint-config-less": "^5.11.2",
+    "typescript": "4.2.3"
+  },
+  "_moduleAliases": {
+    "@interfaces": "dist/interfaces"
+  }
+}

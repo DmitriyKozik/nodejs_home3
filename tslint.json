@@ -1,0 +1,62 @@
+{
+    "extends": "tslint-config-less",
+    "rules": {
+      "no-floating-promises": true,
+      "max-line-length": false,
+      "ter-indent": [false],
+      "no-duplicate-variable": true,
+      "trailing-comma": [
+        false
+      ],
+      "check-types": false,
+      "newline-before-return": true,
+      "typedef": [
+        true,
+        "call-signature"
+      ],
+      "whitespace": [
+        true,
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-preblock",
+        "check-postbrace",
+        "check-separator",
+        "check-type",
+        "check-type-operator",
+        "check-module"
+      ],
+      "import-name": false,
+      "ordered-imports": [
+        true,
+        {
+          "grouped-imports": true,
+          "import-sources-order": "any",
+          "named-imports-order": "case-insensitive",
+          "groups": [
+            {
+              "name": "third-party",
+              "match": "^(?!\\.{1,2}\\/|package-|@interfaces).*$",
+              "order": 10
+            },
+            {
+              "name": "packages",
+              "match": "^package-",
+              "order": 20
+            },
+            {
+              "name": "project",
+              "match": "^(?!.*interfaces).*$",
+              "order": 50
+            },
+            {
+              "name": "interfaces",
+              "match": "^(@interfaces|\\.{1,2}\\/.*interfaces).*$",
+              "order": 60
+            }
+          ]
+        }
+      ]
+    }
+  }
+  

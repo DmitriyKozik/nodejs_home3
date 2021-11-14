@@ -1,0 +1,4 @@
+node_modules
+swagger/node_modules
+coverage
+dist
